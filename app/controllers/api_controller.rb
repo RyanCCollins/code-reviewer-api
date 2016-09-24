@@ -5,7 +5,10 @@ class ApiController < ApplicationController
   def create
     query_string = params[:query]
     query_variables = ensure_hash(params[:variables])
-    result = CodeReviewSchema.execue(query_string, variables: query_variables)
+    result = CodeReviewerSchema.execute(
+      query_string,
+      variables: query_variables
+    )
     render json: result
   end
 

@@ -6,4 +6,5 @@ CommentType = GraphQL::ObjectType.define do
   field :created_at, types.String, 'The date the comment was created'
   field :votes_count, types.String, 'The total number of votes'
   field :user, UserType, 'Owner of the comment'
+  field :project, ProjectType, 'Project that the comment belongs to'
 end
