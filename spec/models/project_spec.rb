@@ -10,6 +10,12 @@ RSpec.describe Project, type: :model do
       email: 'Admin@ryancollins.io',
       password: 'password'
     )
-    expect(Project.create(user: user_model)).to be_valid
+    expect(
+      Project.create(
+        slug: 'hello-world',
+        user: user_model,
+        url: 'helloworld.com'
+      )
+    ).to be_valid
   end
 end
