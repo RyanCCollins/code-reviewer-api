@@ -1,6 +1,6 @@
 CommentType = GraphQL::ObjectType.define do
   name 'Comment'
-  desciption 'A single comment for a project'
+  description 'A single comment for a project'
   field :id, types.ID, 'The ID of the comment'
   field :body, types.String, 'The body of the comment'
   field :created_at, types.String, 'The date the comment was created'
