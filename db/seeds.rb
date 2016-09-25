@@ -20,12 +20,13 @@ users = User.all
 10.times do
   word_1 = FFaker::HipsterIpsum.word
   word_2 = FFaker::HipsterIpsum.word
+  words = "#{word_1} #{word_2}"
   project = Project.create(
-    title: '#{word_1.capitalize} #{word_2.capitalize}',
+    title: words.split(' ').map(&:capitalize).join(' '),
     url: FFaker::Internet.http_url,
     description: FFaker::HipsterIpsum.paragraph,
     user: users.sample,
-    slug: '#{word_1}-#{word_2}'
+    slug: words.split(' ').join('-')
   )
   5.times do
     Comment.create(
