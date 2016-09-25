@@ -9,6 +9,7 @@ gem 'graphql-relay', '~>0.9'
 gem 'graphiql-rails'
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'ffaker'
 end
 
 group :development do
@@ -20,7 +21,6 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'ffaker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
