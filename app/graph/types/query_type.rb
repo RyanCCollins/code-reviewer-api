@@ -10,4 +10,11 @@ QueryType = GraphQL::ObjectType.define do
       Project.find(args['id'])
     }
   end
+  field :comment, CommentType do
+    argument :id, !types.ID
+    description 'Root field to get comments'
+    resolve -> (obj, args, ctx) {
+      Comment.find(args['id'])
+    }
+  end
 end
