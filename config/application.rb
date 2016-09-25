@@ -27,8 +27,8 @@ module CodereviewerApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = false
     config.autoload_paths << Rails.root.join('app/graph')
-    config.autoload_paths << Rails.root.join('app/lib')
     config.autoload_paths << Rails.root.join('app/graph/types')
+    config.autoload_paths << Rails.root.join('app/graph/fields')
     config.generators do |g|
       g.test_framework :rspec
     end

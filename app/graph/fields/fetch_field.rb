@@ -1,5 +1,5 @@
 class FetchField < GraphQL::Field
-  def initialize(model, type)
+  def initialize(model:, type:)
     self.type = type
     @model = model
     self.description = 'Find a #{model.name} by ID'

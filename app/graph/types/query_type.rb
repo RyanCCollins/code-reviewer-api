@@ -1,20 +1,25 @@
+# type Query {
+#   feed: Project
+#   project(id: ID!)
+#   comment(id: ID!)
+# }
 QueryType = GraphQL::ObjectType.define do
   name 'Query'
   description 'The query root of this schema.'
 
   # Get Project by ID
-  field :project, ProjectType do
-    argument :id, !types.ID
-    description 'Root object to get viewer related collections'
+  field :projectsFeed, types[ProjectType] do
+    argument :limit, types.Int
     resolve -> (obj, args, ctx) {
-      Project.find(args['id'])
+      projects = Project.all
+      args[:limit] && projects = projects.limit(args[:limit])
+      projects
     }
   end
-  field :comment, CommentType do
-    argument :id, !types.ID
-    description 'Root field to get comments'
-    resolve -> (obj, args, ctx) {
-      Comment.find(args['id'])
-    }
-  end
+  field :project,
+        ProjectType,
+        field: FetchField.new(model: Project, type: ProjectType)
+  field :comment,
+        CommentType,
+        field: FetchField.new(model: Comment, type: CommentType)
 end
