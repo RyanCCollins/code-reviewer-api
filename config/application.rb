@@ -29,6 +29,8 @@ module CodereviewerApi
     config.autoload_paths << Rails.root.join('app/graph')
     config.autoload_paths << Rails.root.join('app/graph/types')
     config.autoload_paths << Rails.root.join('app/graph/fields')
+    config.autoload_paths << Rails.root.join('app/graph/mutations')
+    config.autoload_paths << Rails.root.join('app/graph/queries')
     config.generators do |g|
       g.test_framework :rspec
     end

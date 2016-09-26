@@ -1,1 +1,4 @@
-CodeReviewerSchema = GraphQL::Schema.new(query: QueryType)
+CodeReviewerSchema = GraphQL::Schema.new(
+  query: QueryType,
+  mutation: MutationType
+)
