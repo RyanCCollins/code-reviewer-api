@@ -1,3 +1,5 @@
+# CreateProject
+# ================================================
 # mutation createProject($title:String!, $body:String!, $url:String!, $description:String!) {
 #   CreateProject(input:{ title:$title, body:$body, url:$url, description: $description }) {
 #     project{
@@ -11,6 +13,27 @@
 #     }
 #   }
 # }
+#
+# DestroyProject
+# ================================================
+# mutation destroyProject($id:ID!) {
+#   DestroyProject(input: {id:$id}) {
+#     deletedId
+#   }
+# }
+#
+# EditProject
+# ================================================
+# mutation editProject($id:ID!, $body:String) {
+#   EditProject(input:{ id: $id, body: $body }) {
+#     project {
+#       body
+#     }
+#   }
+# }
+#
+#
+#
 module ProjectMutations
   Create = GraphQL::Relay::Mutation.define do
     name 'CreateProject'
@@ -55,10 +78,11 @@ module ProjectMutations
     description 'Edit a project'
 
     input_field :id, !types.ID
+    input_field :body, types.String
 
     return_field :project, ProjectType
 
-    resolve -> (input, _) {
+    resolve -> (inputs, _) {
       project = Project.find_by_id(input[:id])
       valid_inputs = inputs.instance_variable_get(:@argument_values).select {
         |k, _| project.respond_to? "#{k}="
