@@ -1,7 +1,8 @@
 # type Query {
-#   feed: Project
-#   project(id: ID!)
-#   comment(id: ID!)
+#   projectsFeed: [Project]
+#   singleProject(slug: String)
+#   project(id: Int!)
+#   comment(id: Int!)
 # }
 QueryType = GraphQL::ObjectType.define do
   name 'Query'
