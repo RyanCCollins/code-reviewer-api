@@ -11,7 +11,8 @@
     name: FFaker::Name.name,
     email: FFaker::Internet.email,
     password: 'password',
-    bio: FFaker::HipsterIpsum.phrase
+    bio: FFaker::HipsterIpsum.phrase,
+    avatar: FFaker::Avatar.image
   )
 end
 
@@ -26,7 +27,7 @@ users = User.all
     url: FFaker::Internet.http_url,
     description: FFaker::HipsterIpsum.paragraph,
     user: users.sample,
-    slug: words.split(' ').join('-')
+    slug: words.split(' ').map(&:downcase).join('-')
   )
   5.times do
     Comment.create(

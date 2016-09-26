@@ -16,6 +16,13 @@ QueryType = GraphQL::ObjectType.define do
       projects
     }
   end
+  field :singleProject, ProjectType do
+    argument :slug, types.String
+    resolve -> (obj, args, ctx) {
+      project = Project.where(slug: args[:slug])
+      project.first || null
+    }
+  end
   field :project,
         ProjectType,
         field: FetchField.new(model: Project, type: ProjectType)
