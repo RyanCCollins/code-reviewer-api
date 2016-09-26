@@ -1,3 +1,16 @@
+# mutation createProject($title:String!, $body:String!, $url:String!, $description:String!) {
+#   CreateProject(input:{ title:$title, body:$body, url:$url, description: $description }) {
+#     project{
+#       id
+#       title
+#       user {
+#         id
+#         name
+#         avatar
+#       }
+#     }
+#   }
+# }
 module ProjectMutations
   Create = GraphQL::Relay::Mutation.define do
     name 'CreateProject'
